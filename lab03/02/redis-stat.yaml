@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  redis-stat:
+    container_name: redis-stat
+    image: insready/redis-stat
+    command: [
+        '--verbose',
+        '--server',
+        'redis-master:6379',
+        'redis-replica1:6383',
+        'redis-replica2:6384'
+        ]
+    extra_hosts:
+      - "redis-master:119.81.23.181"
+      - "redis-replica1:119.81.23.181"
+      - "redis-replica2:119.81.23.181"
+      - "redis-sentinel1:119.81.23.181"
+      - "redis-sentinel2:119.81.23.181"
+      - "redis-sentinel3:119.81.23.181"
+    ports:
+      - "9999:63790"
+
